@@ -68,12 +68,12 @@ function checkAuthStatus() {
 
 /* --- DATA MANAGEMENT --- */
 
-// Default Data (Used if user has no custom settings)
-const defaultCategories = ["Elektronik", "Giyim", "Ev & Yaşam", "Kozmetik: Cilt Bakımı", "Market"];
+// Default Data 
+const defaultCategories = ["Elektronik", "Giyim", "Ev & Yaşam", "Cilt Bakımı", "Market"];
 const defaultPriorities = [
-    { name: "Yüksek", color: "#e74c3c" }, // Red
-    { name: "Orta", color: "#f39c12" },   // Orange
-    { name: "Düşük", color: "#2ecc71" }   // Green
+    { name: "Yüksek", color: "#e74c3c" }, 
+    { name: "Orta", color: "#f39c12" },   
+    { name: "Düşük", color: "#2ecc71" }   
 ];
 
 // Initialize data for new users
@@ -400,6 +400,30 @@ function openModal(element) {
 }
 function closeModal() {
     if(modal) modal.style.display = "none";
+}
+
+/* --- CONTACT FORM LOGIC --- */
+function handleContact(event) {
+    event.preventDefault(); 
+
+    const nameInput = document.getElementById('c-name');
+    const name = nameInput ? nameInput.value : 'Ziyaretçi';
+
+    alert(`Teşekkürler ${name}, mesajınız başarıyla gönderildi!`);
+
+    const successBox = document.getElementById('success-msg');
+    
+    if(successBox) {
+        successBox.style.display = 'block';
+        successBox.innerHTML = `Teşekkürler <strong>${name}</strong>, mesajınız alındı!`;
+        
+        const form = document.getElementById('contact-form');
+        if(form) form.reset();
+
+        setTimeout(() => {
+            successBox.style.display = 'none';
+        }, 3000);
+    }
 }
 
 /* --- INITILAZATION --- */
