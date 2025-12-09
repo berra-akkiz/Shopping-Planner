@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel - Shopping Planner</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo"><h2>Shopping Cart</h2></div>
+        <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="dashboard.html">Panel</a></li>
+        </ul>
+        <button id="theme-toggle" class="btn btn-warning">Koyu Tema</button>
+    </nav>
+
+    <div class="container dashboard-grid">
+        
+        <aside class="card" id="add-section">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom: 2px solid #ddd; padding-bottom: 10px; margin-bottom:15px;">
+                <h3 style="color: var(--purple-primary); margin:0;">Ürün Ekle</h3>
+                <button onclick="openSettingsModal()" class="btn btn-warning" style="padding:5px 10px; font-size:12px;">Ayarlar</button>
+            </div>
+
+            <form id="product-form" onsubmit="handleAddProduct(event)">
+                <label>Ürün Adı</label>
+                <input type="text" id="p-name" required placeholder="Örn: Laptop">
+                
+                <label>Resim URL</label>
+                <input type="url" id="p-image" placeholder="https://...">
+
+                <label>Kategori</label>
+                <select id="p-category">
+                    <option value="Elektronik">Elektronik</option>
+                    <option value="Giyim">Giyim</option>
+                    <option value="Ev">Ev & Yaşam</option>
+                    <option value="Diğer">Diğer</option>
+                </select>
+
+                <label>Öncelik</label>
+                <select id="p-priority">
+                    <option value="High">Yüksek (Acil)</option>
+                    <option value="Medium">Orta</option>
+                    <option value="Low">Düşük</option>
+                </select>
+
+                <div style="display: flex; gap: 10px;">
+                <div style="flex:1;">
+                    <label>Fiyat (TL)</label>
+                    <input type="number" id="p-price" step="0.01" min="0" required>
+                 </div>
+                <div style="flex:1;">
+                    <label>Kargo (TL)</label>
+                    <input type="number" id="p-shipping" step="0.01" min="0" value="0">
+                </div>
+                </div>
+
+                <label>Satıcı Adı</label>
+                <input type="text" id="p-vendor">
+
+                <label>Notlar</label>
+                <textarea id="p-notes" rows="2"></textarea>
+
+                <button type="submit" class="btn btn-primary full-width">Listeye Ekle</button>
+            </form>
+        </aside>
+
+        <main>
+            <div class="card">
+                <div id="analysis-section" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <h3 style="color: var(--primary-color);">Eklenen Ürünler</h3>
+                    <button onclick="calculateBestBasket()" class="btn btn-success">Sepeti Hesapla</button>
+                </div>
+                
+                <div id="calculation-result" class="alert-box alert-info" style="display:none;"></div>
+
+                <div style="overflow-x: auto;">
+                    <table id="product-table">
+                        <thead>
+                            <tr>
+                                <th>Seç</th>
+                                <th>Resim</th>
+                                <th>Ürün Bilgisi</th>
+                                <th>Maliyet</th>
+                                <th>Öncelik</th>
+                                <th>İşlem</th>
+                            </tr>
+                        </thead>
+                        <tbody id="product-list-body">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>  
+    </div>
+
+    <div id="settings-modal" class="modal">
+        <div class="modal-content" style="max-width: 500px; padding: 20px;">
+            <span class="close" onclick="closeSettingsModal()">&times;</span>
+            <h2 style="color: var(--purple-primary); text-align: center;">Ayarları Düzenle</h2>
+            
+            <hr style="margin: 15px 0;">
+
+            <h4>Kategori Yönetimi</h4>
+            <div style="display: flex; gap: 5px; margin-bottom: 10px;">
+                <input type="text" id="new-cat-main" placeholder="Ana Kategori (Örn: Cilt Bakımı)">
+                <input type="text" id="new-cat-sub" placeholder="Alt (Opsiyonel)">
+                <button onclick="addCategory()" class="btn btn-success">+</button>
+            </div>
+            <ul id="settings-cat-list" class="settings-list">
+                </ul>
+
+            <hr style="margin: 15px 0;">
+
+            <h4>Öncelik Etiketleri</h4>
+            <div style="display: flex; gap: 5px; margin-bottom: 10px;">
+                <input type="text" id="new-prio-name" placeholder="Etiket Adı (Örn: Acil)">
+                <input type="color" id="new-prio-color" value="#ff0000" style="width: 50px; padding: 0;">
+                <button onclick="addPriority()" class="btn btn-success">+</button>
+            </div>
+            <ul id="settings-prio-list" class="settings-list">
+                </ul>
+
+            <div style="text-align: right; margin-top: 20px;">
+                <button onclick="closeSettingsModal()" class="btn btn-primary">Tamamla</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Shopping Planner.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

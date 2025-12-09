@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Planner</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <h2>Shopping Planner</h2>
+        </div>
+        <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li>
+                <a href="#">İşlemler ▼</a>
+                <ul class="dropdown">
+                    <li><a href="dashboard.html#add-section">Ürünlerim</a></li>
+                    <li><a href="dashboard.html#analysis-section">Sepet Analizi</a></li>
+                </ul>
+            </li>
+            <li><a href="gallery.html">Galeri</a></li>
+            <li><a href="contact.html">İletişim</a></li>
+        </ul>
+        <button id="theme-toggle" class="btn btn-warning">Koyu Tema</button>
+    </nav>
+
+    <div class="container center-content">
+        <div style="max-width: 800px; margin-top: 50px;">
+            <h1 style="color: var(--primary-color);">Akıllı Alışveriş Listesi</h1>
+            <p>Hayallerindeki ürünleri listele, bütçeni yönet ve en uygun sepeti oluştur.</p>
+            <br>
+            
+            <div id="auth-section" class="card" style="max-width: 400px; margin: 0 auto;">
+                <h3 style="color: var(--primary-color);">Giriş Yap</h3>
+                <input type="text" id="username" placeholder="Adınız">
+                <input type="email" id="email" placeholder="E-posta">
+                <button onclick="handleLogin()" class="btn btn-primary full-width">Giriş Yap</button>
+            </div>
+            
+            <div id="welcome-section" class="card" style="display: none; border-color: var(--success-color);">
+                <h3>Hoşgeldin, <span id="display-username" style="color: var(--primary-color);"></span>!</h3>
+                <p>Ürünlerini yönetmek için panele gidebilirsin.</p>
+                <div style="margin-top: 15px;">
+                    <a href="dashboard.html" class="btn btn-success">Panele Git</a>
+                    <button onclick="handleLogout()" class="btn btn-danger">Çıkış</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Shopping Planner - Tüm Hakları Saklıdır.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

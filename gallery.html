@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri - Shopping Planner</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo"><h2>Shopping Planner</h2></div>
+        <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="gallery.html">Galeri</a></li>
+        </ul>
+        <button id="theme-toggle" class="btn btn-warning">Koyu Tema</button>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <h1 style="color: var(--primary-color); text-align: center;">Ürün Galerisi</h1>
+            <p style="text-align: center; margin-bottom: 20px;">Resimlere tıklayarak büyütebilirsiniz.</p>
+
+            <div class="gallery-grid" id="dynamic-gallery"></div>
+            <div id="no-images-msg" style="text-align: center; display: none; color: var(--text-muted);">
+                <p>Henüz görüntülenecek ürün yok. <a href="dashboard.html" style="color: var(--blue-primary)">
+                    Panelden ürün ekleyebilirsiniz</a></p>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="image-modal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modal-img">
+        <div id="caption" style="color: white; text-align: center; font-size: 20px;"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Shopping Planner.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
