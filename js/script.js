@@ -69,7 +69,7 @@ function checkAuthStatus() {
 /* --- DATA MANAGEMENT --- */
 
 // Default Data 
-const defaultCategories = ["Elektronik", "Giyim", "Ev & Yaşam", "Cilt Bakımı", "Market"];
+const defaultCategories = ["Elektronik", "Giyim", "Ev & Yaşam", "Kişisel Bakım", "Market"];
 const defaultPriorities = [
     { name: "Yüksek", color: "#e74c3c" }, 
     { name: "Orta", color: "#f39c12" },   
@@ -192,7 +192,6 @@ function renderProducts() {
         const totalCost = product.price + product.shipping;
         
         // Handle categories with sub-categories (split by ':')
-        // Example: "Cilt Bakımı: Nemlendirici" -> Main: Cilt Bakımı, Sub: Nemlendirici
         let catDisplay = product.category;
         if(product.category.includes(':')) {
             const parts = product.category.split(':');
@@ -259,7 +258,7 @@ function calculateBestBasket() {
     }
 }
 
-/* --- SETTINGS MODAL LOGIC (NEW) --- */
+/* --- SETTINGS MODAL LOGIC --- */
 const settingsModal = document.getElementById('settings-modal');
 
 function openSettingsModal() {
